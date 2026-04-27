@@ -2,8 +2,10 @@
 
 set -euo pipefail
 
-[[ -e /hive/custom/krx-pool-miner/h-manifest.conf ]] && . /hive/custom/krx-pool-miner/h-manifest.conf
-[[ -e /hive/miners/custom/krx-pool-miner/h-manifest.conf ]] && . /hive/miners/custom/krx-pool-miner/h-manifest.conf
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+. "${SCRIPT_DIR}/h-manifest.conf"
+config_file="${CUSTOM_CONFIG_FILENAME:-config.ini}"
+[[ "$config_file" = /* ]] || config_file="${SCRIPT_DIR}/${config_file}"
 
 pool_url="${CUSTOM_URL:-}"
 
@@ -28,6 +30,6 @@ if [[ -n "${CUSTOM_USER_CONFIG:-}" ]]; then
   conf+=" ${CUSTOM_USER_CONFIG}"
 fi
 
-mkdir -p "$(dirname "$CUSTOM_CONFIG_FILENAME")"
-printf '%s\n' "$conf" > "$CUSTOM_CONFIG_FILENAME"
+mkdir -p "$(dirname "$config_file")"
+printf '%s\n' "$conf" > "$config_file"
 printf '%s\n' "$conf"

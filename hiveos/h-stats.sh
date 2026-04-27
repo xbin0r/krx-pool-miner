@@ -2,7 +2,10 @@
 
 set -euo pipefail
 
-. /hive/miners/custom/krx-pool-miner/h-manifest.conf
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+. "${SCRIPT_DIR}/h-manifest.conf"
+config_file="${CUSTOM_CONFIG_FILENAME:-config.ini}"
+[[ "$config_file" = /* ]] || config_file="${SCRIPT_DIR}/${config_file}"
 
 log_file="${CUSTOM_LOG_BASENAME}.log"
 max_delay=120
@@ -80,7 +83,7 @@ if [[ -n "$stats_raw" && "$diff_time" -lt "$max_delay" ]]; then
   bus_numbers=$(printf '%s\n' "${busid_arr[@]:-0}" | jq -cs '.')
   fan_json=$(printf '%s\n' "${fan_arr[@]:-0}" | jq -cs '.')
   temp_json=$(printf '%s\n' "${temp_arr[@]:-0}" | jq -cs '.')
-  uptime=$((time_now - $(stat -c %Y "$CUSTOM_CONFIG_FILENAME")))
+  uptime=$((time_now - $(stat -c %Y "$config_file")))
 
   stats=$(jq -nc \
     --argjson hs "$hash_json" \

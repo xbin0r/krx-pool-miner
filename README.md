@@ -20,6 +20,8 @@ Latest release includes:
 - fix for the stratum reconnect loop caused by dev fee rotation
 - stable behavior with `--devfund-percent 0`
 - HiveOS custom miner package
+- HiveOS package layout fix for direct custom miner installs
+- Ubuntu 22 Linux and HiveOS assets
 
 ## Quick start
 
@@ -55,6 +57,7 @@ Latest versions no longer enter a reconnect loop when the dev fee rotation bound
 HiveOS users can use the bundled custom miner package from Releases:
 
 - `krx-pool-miner-v*-linux-hiveos.tar.gz`
+- `krx-pool-miner-v*-linux-ubuntu22-hiveos.tar.gz`
 
 Recommended pool URLs:
 

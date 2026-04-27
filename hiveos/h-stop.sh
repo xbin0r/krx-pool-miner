@@ -2,8 +2,8 @@
 
 set -euo pipefail
 
-[[ -e /hive/custom/krx-pool-miner/h-manifest.conf ]] && . /hive/custom/krx-pool-miner/h-manifest.conf
-[[ -e /hive/miners/custom/krx-pool-miner/h-manifest.conf ]] && . /hive/miners/custom/krx-pool-miner/h-manifest.conf
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+. "${SCRIPT_DIR}/h-manifest.conf"
 
 pkill -f "/${CUSTOM_NAME}/${CUSTOM_MINERBIN}" || true
 pkill -f "./${CUSTOM_MINERBIN}" || true

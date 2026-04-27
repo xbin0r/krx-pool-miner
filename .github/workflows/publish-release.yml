@@ -20,5 +20,4 @@ jobs:
         with:
           body_path: RELEASE_NOTES.md
           files: |
-            artifacts/*linux*.tar.gz
-            artifacts/*hiveos*.tar.gz
+            artifacts/*${{ github.ref_name }}*.tar.gz
