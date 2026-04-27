@@ -21,3 +21,4 @@ jobs:
           body_path: RELEASE_NOTES.md
           files: |
             artifacts/*linux*.tar.gz
+            artifacts/*hiveos*.tar.gz

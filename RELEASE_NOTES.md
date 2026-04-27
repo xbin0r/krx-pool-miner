@@ -3,6 +3,7 @@
 - fixed the stratum reconnect loop caused by dev fee rotation
 - fixed stable operation when running with `--devfund-percent 0`
 - Linux x86_64 release with bundled CUDA and OpenCL plugins
+- HiveOS custom miner package with wrapper scripts and stats integration
 
 ## Pool quick start
 

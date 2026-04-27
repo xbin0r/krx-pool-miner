@@ -1,6 +1,6 @@
 # krx-pool-miner
 
-Public download repository for the `krx-pool-miner` Linux binaries.
+Public download repository for the `krx-pool-miner` Linux binaries and HiveOS custom miner package.
 
 This repository is intentionally kept minimal:
 
@@ -19,6 +19,7 @@ Latest release includes:
 
 - fix for the stratum reconnect loop caused by dev fee rotation
 - stable behavior with `--devfund-percent 0`
+- HiveOS custom miner package
 
 ## Quick start
 
@@ -48,6 +49,25 @@ You can disable it explicitly:
 ```
 
 Latest versions no longer enter a reconnect loop when the dev fee rotation boundary is reached.
+
+## HiveOS
+
+HiveOS users can use the bundled custom miner package from Releases:
+
+- `krx-pool-miner-v*-linux-hiveos.tar.gz`
+
+Recommended pool URLs:
+
+- standard port: `stratum+tcp://eu.miningcrib.com:7212`
+- higher-difficulty port: `stratum+tcp://eu.miningcrib.com:7213`
+
+Wallet/template should be your `keryx:` address.
+
+Optional extra config:
+
+```bash
+--devfund-percent 0
+```
 
 ## Notes
 
