@@ -20,7 +20,7 @@ Latest release includes:
 - fix for the stratum reconnect loop caused by dev fee rotation
 - stable behavior with `--devfund-percent 0`
 - HiveOS custom miner package
-- HiveOS package layout fix for direct custom miner installs
+- HiveOS package layout aligned with common custom miner bundles
 - Ubuntu 22 Linux and HiveOS assets
 
 ## Quick start

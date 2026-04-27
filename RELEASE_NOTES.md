@@ -4,7 +4,7 @@
 - fixed stable operation when running with `--devfund-percent 0`
 - Linux x86_64 release with bundled CUDA and OpenCL plugins
 - HiveOS custom miner package with wrapper scripts and stats integration
-- fixed HiveOS custom miner package layout for direct installs
+- aligned HiveOS package layout with common custom miner bundles
 - added Ubuntu 22 Linux and HiveOS release assets
 
 ## Pool quick start

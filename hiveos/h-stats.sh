@@ -3,9 +3,15 @@
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-. "${SCRIPT_DIR}/h-manifest.conf"
+if [[ -z "${MINER_DIR:-}" || -z "${CUSTOM_MINER:-}" ]]; then
+  MINER_PATH="$SCRIPT_DIR"
+else
+  MINER_PATH="$MINER_DIR/$CUSTOM_MINER"
+fi
+
+. "${MINER_PATH}/h-manifest.conf"
 config_file="${CUSTOM_CONFIG_FILENAME:-config.ini}"
-[[ "$config_file" = /* ]] || config_file="${SCRIPT_DIR}/${config_file}"
+[[ "$config_file" = /* ]] || config_file="${MINER_PATH}/${config_file}"
 
 log_file="${CUSTOM_LOG_BASENAME}.log"
 max_delay=120
@@ -40,7 +46,6 @@ if [[ -n "$stats_raw" && "$diff_time" -lt "$max_delay" ]]; then
   total_unit=$(awk '{print $NF}' <<<"$stats_raw")
   total_hashrate=$(to_khs "$total_rate" "$total_unit")
 
-  gpu_stats=$(<"$GPU_STATS_JSON")
   readarray -t gpu_meta < <(jq --slurp -r -c '.[] | .busids, .brand, .temp, .fan | join(" ")' "$GPU_STATS_JSON" 2>/dev/null)
   busids=(${gpu_meta[0]:-})
   brands=(${gpu_meta[1]:-})
