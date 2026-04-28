@@ -1,5 +1,7 @@
 ## What's new
 
+- reconnects immediately when the stratum submit channel dies
+- stops hashing stale work after a dead stratum session instead of running until manual restart
 - fixed the stratum reconnect loop caused by dev fee rotation
 - reconnects automatically when the stratum pool goes idle or stops responding
 - fixed unexpected graceful reconnect loops during long-running stratum sessions

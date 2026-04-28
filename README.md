@@ -17,6 +17,8 @@ Download the latest Linux build from the Releases page:
 
 Latest release includes:
 
+- reconnect immediately when the stratum submit channel dies
+- stop hashing stale work after a dead stratum session instead of running until manual restart
 - fix for the stratum reconnect loop caused by dev fee rotation
 - reconnect when the stratum pool goes idle or disappears silently
 - fix for unexpected graceful reconnect loops during long-running stratum sessions
