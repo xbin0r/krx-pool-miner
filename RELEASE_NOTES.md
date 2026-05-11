@@ -1,5 +1,9 @@
 ## What's new
 
+- added `--min-payout` support:
+  - sends `min-payout=<amount>` in the Stratum password
+  - lets supported pools store a per-miner payout threshold
+- added OPoI escrow public-key option for direct gRPC mining experiments
 - Linux/HiveOS artifacts rebuilt on Ubuntu 22 toolchain (glibc 2.35 baseline)
 - fixes runtime compatibility issue on some HiveOS/Ubuntu22 rigs (`GLIBC_2.39 not found`)
 - panic guard around plugin option parsing:
@@ -34,6 +38,15 @@ For fixed diff:
   --keryxd-address stratum+tcp://eu.miningcrib.com:7213 \
   --mining-address keryx:YOUR_WALLET_ADDRESS \
   --password 'x;d=1000000000'
+```
+
+For custom payout threshold:
+
+```bash
+./keryx-miner \
+  --keryxd-address stratum+tcp://eu.miningcrib.com:7212 \
+  --mining-address keryx:YOUR_WALLET_ADDRESS \
+  --min-payout 1000
 ```
 
 To disable the dev fee:

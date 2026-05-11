@@ -18,6 +18,8 @@ Download the latest builds from the Releases page:
 
 Latest release includes:
 
+- `--min-payout` support for requesting a higher pool payout threshold over Stratum
+- OPoI escrow public-key option for direct gRPC mining experiments
 - Linux/HiveOS binaries rebuilt with Ubuntu 22 glibc baseline for wider compatibility
 - panic guard for plugin option parsing (avoids full crash if one plugin panics)
 - reconnect immediately when the stratum submit channel dies
@@ -53,6 +55,15 @@ For fixed difficulty on Miningcore-compatible pools, pass a stratum password suc
   --keryxd-address stratum+tcp://eu.miningcrib.com:7213 \
   --mining-address keryx:YOUR_WALLET_ADDRESS \
   --password 'x;d=1000000000'
+```
+
+To request a higher pool payout threshold on supported pools:
+
+```bash
+./keryx-miner \
+  --keryxd-address stratum+tcp://eu.miningcrib.com:7212 \
+  --mining-address keryx:YOUR_WALLET_ADDRESS \
+  --min-payout 1000
 ```
 
 On Windows, use the bundled `mine.bat` as a starting point and replace `YOUR_WALLET_ADDRESS` before first launch.
@@ -96,6 +107,12 @@ For fixed diff in HiveOS extra config, you can also use:
 
 ```bash
 --password 'x;d=1000000000'
+```
+
+For a custom payout threshold in HiveOS extra config:
+
+```bash
+--min-payout 1000
 ```
 
 ## Notes
